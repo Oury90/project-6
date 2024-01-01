@@ -1,0 +1,79 @@
+<%- include('partials/header'); -%>
+
+<div class="top-banner">
+    <div class="content-banner">
+        <h1>Amadou Oury Diallo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum labore ex dolores at minus necessitatibus quibusdam. Suscipit, totam quod?</p>
+        <a href="#contact" class="btn">Contact</a>
+    </div>
+
+</div>
+<section>
+    <div class="about" id="about">
+        <% if(locals.datas){%>
+            <div class="box">
+                <% datas.weather.forEach((data) =>{%>
+                    <img class="shake-horizontal" src="https://openweathermap.org/img/wn/<%= data.icon %>@2x.png" alt="">
+                <% }) %>
+                <% let temp = Math.round(datas.main.temp) %>
+                <h3> <%= temp%> °C</h3>
+            </div>
+
+        <% } %>
+        
+
+    </div>
+</section>
+<section>
+    <div class="card mb-3">
+        <div class="row g-1">
+            <% if(locals.infos){%>   
+                <% console.log(infos[1].urlToImage) %>
+          <div class="col-md-6">
+            <!-- carossel -->
+            
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">  
+                            <img src="<%= infos[1].urlToImage %>" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="<%= infos[2].urlToImage %>" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= infos[3].urlToImage %>" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="<%= infos[4].urlToImage %>" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= infos[5].urlToImage %>" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            <!-- fin carossel -->
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+
+          <%} %>
+
+        </div>
+      </div>
+</section>
+
+
+<%- include('partials/footer'); -%>
